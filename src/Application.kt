@@ -27,7 +27,7 @@ fun main(){
         println("La bibliothèque contient à présent les livres suivants : ")
 
         for(a_book in library.books){
-            println("Titre : " +a_book.title+ ", Auteur : " +a_book.author)
+            println("Titre : " +a_book.title+ ", Auteur : " +a_book.author+ ", Genre : "+a_book.genre)
         }
     }
 
