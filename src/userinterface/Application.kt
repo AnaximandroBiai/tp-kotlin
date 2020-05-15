@@ -4,13 +4,14 @@ import entities.Book
 import entities.Library
 import usecases.Management
 import java.util.*
+import kotlin.system.exitProcess
 
 fun main(){
 
     val library = Library()
     val management = Management()
 
-    println("Bienvenue dans votre bibliothèque, veuillez appuyer sur entrée, puis entrez l'action que vous voulez effectuer, vous avez le choix entre 'Ajouter', 'Lister', 'Supprimer' ou 'Compter' ")
+    println("Bienvenue dans votre bibliothèque, veuillez appuyer sur entrée, puis entrez l'action que vous voulez effectuer, vous avez le choix entre 'Ajouter', 'Lister', 'Supprimer', 'Compter' ou 'Quitter' ")
 
     readLine()
 
@@ -35,6 +36,10 @@ fun main(){
         else if(action == "Compter"){
             management.countBooks(library)
             println("Veuillez entrer la prochaine action a efectuer")
+        }
+
+        else if(action == "Quitter"){
+            exitProcess(status = 0)
         }
 
         else{
