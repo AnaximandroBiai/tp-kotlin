@@ -1,5 +1,6 @@
 package userinterface
 
+import External.Export
 import entities.Book
 import entities.Library
 import usecases.Management
@@ -10,8 +11,9 @@ fun main(){
 
     val library = Library()
     val management = Management()
+    val export = Export()
 
-    println("Bienvenue dans votre bibliothèque, veuillez appuyer sur entrée, puis entrez l'action que vous voulez effectuer, vous avez le choix entre 'Ajouter', 'Lister', 'Supprimer', 'Compter' ou 'Quitter' ")
+    println("Bienvenue dans votre bibliothèque, veuillez appuyer sur entrée, puis entrez l'action que vous voulez effectuer, vous avez le choix entre 'Ajouter', 'Lister', 'Supprimer', 'Compter', 'Exporter' ou 'Quitter' ")
 
     readLine()
 
@@ -36,6 +38,11 @@ fun main(){
         else if(action == "Compter"){
             management.countBooks(library)
             println("Veuillez entrer la prochaine action a efectuer")
+        }
+
+        else if(action == "Exporter"){
+            export.exportLibrary(library)
+            println("Le fichier est à la racine, veuillez entrer la prochaine action a efectuer")
         }
 
         else if(action == "Quitter"){
