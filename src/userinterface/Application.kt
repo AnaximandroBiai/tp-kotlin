@@ -2,34 +2,43 @@ package userinterface
 
 import entities.Book
 import entities.Library
+import usecases.Management
 import java.util.*
 
 fun main(){
 
     val library = Library()
+    val management = Management()
 
-    println("Bienvenue dans votre bibliothèque, pour ajouter un livre, appuyez sur une touche pour continuer")
+    println("Bienvenue dans votre bibliothèque, veuillez appuyer sur entrée, puis entrez l'action que vous voulez effectuer, vous avez le choix entre 'Ajouter', 'Lister', 'Supprimer' ou 'Compter' ")
 
     readLine()
 
     while(true) {
-        print("Auteur :")
-        val author = readLine().toString()
 
-        print("Titre : ")
-        val title = readLine().toString()
+        var action: String = readLine().toString()
 
-        print("Genre : ")
-        val genre = readLine().toString()
+        if (action == "Ajouter") {
+            management.addBookToLibrary(library)
+            println("Le livre a bien été ajouté, veuillez entrer la prochaine action a efectuer")
+        }
 
-        val book = Book(UUID.randomUUID(), author, title, genre)
+        else if(action == "Lister") {
+            management.getListOfBooks(library)
+            println("Veuillez entrer la prochaine action a efectuer")
+        }
 
-        library.books.add(book)
+        else if(action == "Supprimer"){
+            management.deleteBookById(library)
+        }
 
-        println("La bibliothèque contient à présent les livres suivants : ")
+        else if(action == "Compter"){
+            management.countBooks(library)
+            println("Veuillez entrer la prochaine action a efectuer")
+        }
 
-        for(a_book in library.books){
-            println("Titre : " +a_book.title+ ", Auteur : " +a_book.author+ ", Genre : "+a_book.genre)
+        else{
+            println("L'action n'a pas été comprise veuillez réessayer")
         }
     }
 
